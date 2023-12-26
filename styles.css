@@ -1,0 +1,42 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn{
+    width: 8rem;
+    height: 3rem;
+    border-radius: 5px;
+    margin: 3rem 0;
+    font-weight: 600;
+    box-shadow: 1px 3px 5px 0.5px gray;
+
+}
+
+.btn:hover{
+    background-color: rgb(57, 195, 195);
+    border: none;
+}
+
+.container{
+    /* margin: auto; */
+    /* transform:translate(0, 25%); */
+    display: flex;
+    flex-wrap: wrap;
+    width: 35vw;
+    height: 35vw;
+    background-color: azure;
+    box-shadow: 0 0 4px 1px gray;
+}
+
+.container div{
+    width: 6.25%;
+    height: 6.25%;
+    background-color: azure;
+}
+
+.container div:hover{
+    background-color: orange;
+}
