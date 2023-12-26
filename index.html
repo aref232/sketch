@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
 </head>
 <body>
 
@@ -16,12 +14,30 @@
         const container = document.createElement('div');
         container.className = 'container';
         document.body.appendChild(container);
+        
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
 
-        // Create div elements for grid
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+
+            return color;
+            }
+
+
+        // Create div elements for grid + customize 
         function createGrid(n){
             let div;
+            let divSize = 100/n;
             for (let i = 0; i < n*n; i++) {
-                div = document.createElement('div');
+                const div = document.createElement('div');
+                div.style.width = divSize + '%';
+                div.style.height = divSize + '%';
+                div.addEventListener("mouseover", () => {
+                    div.style.backgroundColor = getRandomColor();
+                })
                 container.appendChild(div);
             }
             return;
@@ -33,7 +49,7 @@
 
         // Create a button to customize grid size
         btn = document.querySelector('.btn');
-        btn.addEventListener('click', function (e) {
+        btn.addEventListener('click', () => {
             // acquire new grid size
             do{
                 n = Number(prompt("Type grid size number: "));
@@ -46,16 +62,9 @@
                 div.remove();
             });
 
-            // Create new divs, then customize width and height
             createGrid(n);
 
-            divs = document.querySelectorAll('.container div');
-            divs.forEach((div) => {
-                div.style.width = 100/n + '%';
-                div.style.height = 100/n + '%';
-            })
         });
-        
     </script>
 </body>
 </html>
